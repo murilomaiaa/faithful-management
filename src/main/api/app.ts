@@ -8,14 +8,14 @@ import cors from 'cors';
 import routes from '@/infra/http/routes';
 
 import swaggerFile from '@/infra/http/swagger.json';
-import { errorHandler, rateLimiter } from '@/infra/http/middlewares';
+import { errorHandler } from '@/infra/http/middlewares';
 
 const app = express();
 
 app.use(cors());
 app.use(helmet());
 app.use(express.json());
-app.use(rateLimiter);
+// app.use(rateLimiter);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
