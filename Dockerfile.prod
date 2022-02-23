@@ -1,0 +1,29 @@
+FROM node:16-alpine AS builder
+
+WORKDIR /home/root/api
+
+# Copy package.json and yarn.lock to container
+COPY package.json yarn.lock ./
+
+# set user root
+USER root
+
+# RUN yarn global add typescript ts-node
+# Install dependencies
+RUN yarn
+
+COPY --chown=root:root . .
+
+RUN yarn build
+
+# Second stage
+FROM node:16-alpine
+
+WORKDIR /home/root/api
+
+COPY --from=builder /home/root/api/dist ./dist
+COPY --chown=node:node .env .
+
+EXPOSE 3333
+
+CMD [ "yarn", "start" ]
