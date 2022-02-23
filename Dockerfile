@@ -1,8 +1,4 @@
-FROM node:16
-
-# Create the folder structure
-# RUN mkdir -p /home/root/api/node_modules && \
-    # chown -R root:root /home/root/api
+FROM node:16-alpine
 
 WORKDIR /home/root/api
 
@@ -12,7 +8,6 @@ COPY package.json yarn.lock ./
 # set user root
 USER root
 
-# RUN yarn global add typescript ts-node
 # Install dependencies
 RUN yarn
 
@@ -22,4 +17,4 @@ RUN yarn build
 
 EXPOSE 3333
 
-ENTRYPOINT [ "yarn", "start" ]
+CMD [ "yarn", "start" ]
