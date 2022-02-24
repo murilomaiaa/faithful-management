@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  api:
+    image: mrlmaia/controle-membros-node
+    container_name: controle-membros-node
+    networks:
+      - controle-membros
+    ports:
+      - '3333:3333'
+
+  nginx:
+    image: mrlmaia/controle-membros-nginx
+    container_name: controle-membros-nginx
+    networks:
+      - controle-membros
+    ports:
+      - '80:80'
+
+  db:
+    image: docker.io/bitnami/mysql:8.0
+    command: --innodb-use-native-aio=0
+    ports:
+      - '3306:3306'
+    container_name: db
+    restart: always
+    tty: true
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=controle-membros
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=root
+    networks:
+      - controle-membros
+
+networks:
+  controle-membros:
+    driver: bridge
