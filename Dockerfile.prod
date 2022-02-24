@@ -5,10 +5,11 @@ WORKDIR /home/root/api
 # Copy package.json and yarn.lock to container
 COPY package.json yarn.lock ./
 
+RUN npm config set unsafe-perm true
+
 # set user root
 USER root
 
-# RUN yarn global add typescript ts-node
 # Install dependencies
 RUN yarn
 
@@ -21,8 +22,17 @@ FROM node:16-alpine
 
 WORKDIR /home/root/api
 
+COPY package.json yarn.lock ./
+
+USER root
+
+# Install only production dependencies
+RUN yarn install --production
+
+# Copy dist folder to container
 COPY --from=builder /home/root/api/dist ./dist
-COPY --chown=node:node .env .
+
+COPY --chown=root:root .env .
 
 EXPOSE 3333
 
