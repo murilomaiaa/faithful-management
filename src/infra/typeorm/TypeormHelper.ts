@@ -29,7 +29,7 @@ export class TypeormHelper {
       });
 
     this.connection = await createConnection({
-      type: 'mysql',
+      type: 'postgres',
       host: process.env.DB_HOST,
       port: process.env.DB_PORT ? Number(process.env.DB_PORT) : undefined,
       username: process.env.DB_USERNAME,
