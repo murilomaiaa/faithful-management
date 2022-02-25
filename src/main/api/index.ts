@@ -1,12 +1,14 @@
+import 'dotenv/config';
 import { TypeormHelper } from '@/infra/typeorm';
 import { app } from './app';
 
-// TypeormHelper.getInstance()
-// .connect()
-// .then(() => {
-app.listen(3333, () => {
-  // eslint-disable-next-line no-console
-  console.log('Listening on port 3333');
-});
-// })
-// .catch(console.log);
+const PORT = process.env.PORT ?? 3000;
+TypeormHelper.getInstance()
+  .connect()
+  .then(() => {
+    app.listen(PORT, () => {
+      // eslint-disable-next-line no-console
+      console.log(`Listening on port ${PORT}`);
+    });
+  })
+  .catch(console.log);

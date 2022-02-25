@@ -1,6 +1,7 @@
 .idea/
 .vscode/
 .docker/dbdata
+.docker/
 node_modules/
 build/
 temp/

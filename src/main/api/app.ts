@@ -1,5 +1,4 @@
 import 'reflect-metadata';
-import 'dotenv/config';
 import express from 'express';
 import 'express-async-errors';
 import helmet from 'helmet';
