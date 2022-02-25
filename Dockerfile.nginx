@@ -4,10 +4,7 @@ FROM nginx:1.15.0-alpine
 RUN rm /etc/nginx/conf.d/default.conf
 
 # Copy config to container
-COPY nginx.conf /etc/nginx/conf.d
-
-# Test config
-RUN nginx -t
+COPY nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 80
 

@@ -31,20 +31,18 @@ services:
     restart: always
     networks:
       - controle-membros
-    ports:
-      - '3000:3000'
     depends_on:
       - controle-membros-db
 
-  # nginx:
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile.nginx
-  #   container_name: controle-membros-nginx
-  #   networks:
-  #     - controle-membros
-  #   ports:
-  #     - '80:80'
-  #   depends_on:
-  #     - controle-membros-node
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    container_name: controle-membros-nginx
+    networks:
+      - controle-membros
+    ports:
+      - '80:80'
+    depends_on:
+      - controle-membros-node
 
