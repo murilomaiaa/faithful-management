@@ -1,10 +1,11 @@
-# Controle de membros
+# Faithful management
 **Sistema feito para igrejas. O sistema consiste em um cadastro de fiéis**
 
 - [Faithful management](#faithful-management)
   - [Execução local](#execução-local)
     - [Pré-requisitos](#pré-requisitos)
     - [Executando o projeto](#executando-o-projeto)
+  - [Lint](#lint)
 
 ---
 
