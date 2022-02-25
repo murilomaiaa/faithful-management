@@ -1,7 +1,7 @@
 # Controle de membros
 **Sistema feito para igrejas. O sistema consiste em um cadastro de fiéis**
 
-- [Maithful management](#maithful-management)
+- [Faithful management](#faithful-management)
   - [Execução local](#execução-local)
     - [Pré-requisitos](#pré-requisitos)
     - [Executando o projeto](#executando-o-projeto)
