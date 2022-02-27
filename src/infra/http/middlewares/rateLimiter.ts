@@ -16,7 +16,7 @@ const limiter = new RateLimiterRedis({
   keyPrefix: 'rateLimit',
   points: 5, // number of requests per second
   duration: 1,
-  blockDuration: 5, // duracao do bloqueio
+  blockDuration: 5,
 });
 
 export async function rateLimiter(request: Request, _: Response, next: NextFunction): Promise<void> {

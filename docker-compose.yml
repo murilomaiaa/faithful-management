@@ -10,16 +10,30 @@ services:
     container_name: controle-membros-db
     restart: always
     tty: true
-    volumes:
-      - /var/docker/postgresql:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
       - POSTGRES_DB=controle_membros
+    volumes:
+      - /var/docker/postgresql:/var/lib/postgresql/data
     networks:
       - controle-membros
     ports:
       - "5432:5432"
+
+  controle-membros-redis:
+    image: docker.io/bitnami/redis:6.2
+    container_name: controle-membros-redis
+    environment:
+      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL,CONFIG
+      - REDIS_AOF_ENABLED=no
+      - REDIS_PASSWORD=root
+    volumes:
+      - '/var/docker/redis:/bitnami/redis/data'
+    networks:
+      - controle-membros
+    ports:
+      - '6379:6379'
 
   controle-membros-node:
     build: .
@@ -31,6 +45,7 @@ services:
       - controle-membros
     depends_on:
       - controle-membros-db
+      - controle-membros-redis
 
   nginx:
     build:
