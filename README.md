@@ -31,7 +31,7 @@ cp .env.example .env && \
 docker-compose up -d
 ```
 O docker-compose irá iniciar 3 serviços
-1. Um banco de dados postgres
+1. Um banco de dados postgresql
 2. Uma API Node. Quando essa API iniciar, ela executará as migrations
 3. Nginx para proxy reverso
 
