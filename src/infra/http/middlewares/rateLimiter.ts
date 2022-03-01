@@ -6,6 +6,7 @@ import cache from '@/main/config/cache';
 import AppError from '@/main/errors/AppError';
 
 const redisClient = new Redis({
+  enableOfflineQueue: false,
   host: cache.config.redis.host,
   port: cache.config.redis.port ? Number(cache.config.redis.port) : undefined,
   password: cache.config.redis.password || undefined,
@@ -14,7 +15,7 @@ const redisClient = new Redis({
 const limiter = new RateLimiterRedis({
   storeClient: redisClient,
   keyPrefix: 'rateLimit',
-  points: 5, // number of requests per second
+  points: 10, // number of requests per second
   duration: 1,
   blockDuration: 5,
 });
