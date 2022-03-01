@@ -1,3 +1,4 @@
+import env from '@/main/config/env';
 import { readdir } from 'fs/promises';
 import path from 'path';
 import { Connection, createConnection } from 'typeorm';
@@ -29,13 +30,9 @@ export class TypeormHelper {
       });
 
     this.connection = await createConnection({
-      type: 'postgres',
-      host: process.env.DB_HOST,
-      port: process.env.DB_PORT ? Number(process.env.DB_PORT) : undefined,
-      username: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_DATABASE,
+      ...env.db,
       migrations,
+      type: 'postgres',
       entities: [`${process.env.TS_NODE_DEV === undefined ? 'dist' : 'src'}/infra/typeorm/entities/index.{js,ts}`],
     });
 
