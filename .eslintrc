@@ -11,23 +11,24 @@
  ],
  "rules": {
    "no-console": "warn",
+   "@typescript-eslint/no-namespace": "off",
    "camelcase":"error",
    "prettier/prettier": "error",
    "import/prefer-default-export": "off",
    "@typescript-eslint/naming-convention": [
-     "error",
-     {
-       "selector": "interface",
-       "format": [
-         "PascalCase"
-       ],
-       "custom": {
-         "regex": "^I[A-Z]",
-         "match": true
-       }
-     }
-   ],
-   "@typescript-eslint/no-unused-vars": [
+    "error",
+    {
+      "selector": "interface",
+      "format": [
+        "PascalCase"
+      ],
+      "custom": {
+        "regex": "^I[A-Z]",
+        "match": true
+      }
+    }
+  ],
+  "@typescript-eslint/no-unused-vars": [
      "error",
      {
        "argsIgnorePattern": "_"
