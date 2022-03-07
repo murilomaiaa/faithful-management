@@ -21,6 +21,6 @@ export const errorHandler = (err: Error, req: Request, res: Response, _: NextFun
   }
   return res.status(500).json({
     status: 'error',
-    message: 'Internal Server Error',
+    message: 'Internal server error',
   });
 };
