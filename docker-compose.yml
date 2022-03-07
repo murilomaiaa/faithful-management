@@ -13,7 +13,7 @@ services:
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
-      - POSTGRES_DB=controle_membros
+      - POSTGRES_DB=faithful_management
     volumes:
       - /var/docker/postgresql:/var/lib/postgresql/data
     networks:
