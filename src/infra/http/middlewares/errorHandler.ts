@@ -1,11 +1,10 @@
-import AppError from '@/main/errors/AppError';
 import { NextFunction, Request, Response } from 'express';
-import { isCelebrateError } from 'celebrate';
+import Joi from 'joi';
+import AppError from '@/main/errors/AppError';
 
 export const errorHandler = (err: Error, req: Request, res: Response, _: NextFunction) => {
-  if (isCelebrateError(err)) {
-    const values = err.details.values();
-    let { message } = values.next().value.details[0];
+  if (Joi.isError(err)) {
+    let { message } = err.details.values().next().value;
     message = message.replace('"', '').replace('"', '');
 
     return res.status(400).json({
