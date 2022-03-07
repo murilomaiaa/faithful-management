@@ -27,4 +27,8 @@ export abstract class BaseEntity {
   }
 
   protected abstract validate(): Error | undefined;
+
+  public getId(): string {
+    return this.id;
+  }
 }

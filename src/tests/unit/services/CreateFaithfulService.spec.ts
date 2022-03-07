@@ -30,7 +30,7 @@ describe('CreateFaithfulService', () => {
       maritalStatus: 'any-status',
       phone: '31990609658',
     };
-    faithfulRepository = { create: jest.fn() };
+    faithfulRepository = { create: jest.fn().mockImplementation(async f => f) };
     systemUnderTests = new CreateFaithfulService(faithfulRepository);
   });
 
@@ -39,5 +39,14 @@ describe('CreateFaithfulService', () => {
 
     expect(faithfulRepository.create).toBeCalledTimes(1);
     expect(faithfulRepository.create).toBeCalledWith(new Faithful(args));
+  });
+
+  it('should return the created id', async () => {
+    const faithful = new Faithful({ ...args, id: 'c9608f74-1f24-459f-b1a3-8e6bec6cb835' });
+    faithfulRepository.create.mockResolvedValueOnce(faithful);
+
+    const id = await systemUnderTests.execute(args);
+
+    expect(id).toEqual(faithful.getId());
   });
 });

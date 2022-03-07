@@ -1,7 +1,6 @@
 import { Faithful } from '@/domain/entities';
 import { AddressDTO } from '@/domain/entities/valueObjects';
 import { IFaithfulRepository } from '@/domain/repositories/IFaithfulRepository';
-import { randomUUID } from 'crypto';
 
 export namespace CreateFaithfulDTO {
   export type Input = {
@@ -30,10 +29,10 @@ export class CreateFaithfulService implements ICreateFaithfulService {
   constructor(private readonly faithfulRepository: IFaithfulRepository) {}
 
   async execute(data: CreateFaithfulDTO.Input): Promise<string> {
-    const faithful = new Faithful(data);
+    const f = new Faithful(data);
 
-    await this.faithfulRepository.create(faithful);
+    const faithful = await this.faithfulRepository.create(f);
 
-    return randomUUID();
+    return faithful.getId();
   }
 }
