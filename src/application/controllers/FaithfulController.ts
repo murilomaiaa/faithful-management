@@ -47,8 +47,15 @@ export namespace CreateFaithfulDTO {
   };
 }
 
-export class FaithfulController {
-  constructor(private readonly validator: IValidator) {}
+export interface IController {
+  path: string;
+}
+export class FaithfulController implements IController {
+  public path: string;
+  constructor(private readonly validator: IValidator) {
+    this.path = '/faithful';
+  }
+
   async create(request: HttpRequest<FaithfulRequest>): Promise<HttpResponse> {
     await this.validator.validate(request.body);
 

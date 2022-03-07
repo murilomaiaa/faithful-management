@@ -6,6 +6,7 @@ const env = {
     password: process.env.DB_PASSWORD as string,
     database: process.env.DB_DATABASE as string,
   },
+  apiPort: process.env.PORT ?? 3000,
 };
 
 function validateEnvs(object: Record<string, unknown>) {

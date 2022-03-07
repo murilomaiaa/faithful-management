@@ -3,8 +3,8 @@ import { Router } from 'express';
 
 const routes = Router();
 
-routes.post('/', async (req, res) => {
-  const controller = makeFaithfulController();
+const controller = makeFaithfulController();
+routes.post(controller.path, async (req, res) => {
   const { body, status } = await controller.create(req);
   return res.status(status).json(body);
 });
