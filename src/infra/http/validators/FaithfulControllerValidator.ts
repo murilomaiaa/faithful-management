@@ -16,7 +16,7 @@ export class FaithfulControllerValidator implements IValidator {
         church: Joi.string().required(),
       }),
       baptism: Joi.object({
-        atDay: Joi.string().required(),
+        atDay: date.required(),
         church: Joi.string().required(),
       }),
       address: address.required(),
