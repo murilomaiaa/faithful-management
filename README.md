@@ -2,12 +2,58 @@
 **Sistema feito para igrejas. O sistema consiste em um cadastro de fiéis**
 
 - [Faithful management](#faithful-management)
+  - [Sobre o projeto](#sobre)
   - [Execução local](#execução-local)
     - [Pré-requisitos](#pré-requisitos)
     - [Executando o projeto](#executando-o-projeto)
   - [Lint](#lint)
 
 ---
+
+## Sobre o projeto
+Esse projeto foi criado para ajudar igrejas a gerenciarem o seus fiéis. Além disso, está servindo de base para aumentar meu conhecimento em [Docker](./Dockerfile) e [Docker Compose](./docker-compose.yml).
+
+### Tecnologias utilizadas
+- Node
+- Express
+- Jest como ferramenta de testes automatizados
+- Eslint para padronizar alguns aspectos do código como aspas simples e ponto-vírgula
+- Husky e lint-staged para garantir que o desenvolvedor não suba o código sem executar os testes e lint
+- Typeorm para manipulação de banco de dados
+
+
+### Estrutura de diretórios
+
+```
+src/
+ ├─ application/
+ |   ├─ controllers/
+ |   └─ http/
+ ├─ domain/
+ |   ├─ entities/
+ |   ├─ features/
+ |   └─ repositories/
+ ├─ infra/
+ |   ├─ http/
+ |   └─ typeorm/
+ ├─ main/
+ |   ├─ api/
+ |   ├─ config/
+ |   ├─ factories/
+ ├─ test/
+ |   ├─ integration/
+ |   └─ unit/
+ └─ package.json
+```
+
+Cada pasta, com exceção de `tests`, representa uma camada da aplicação.
+
+- **application**: Nessa pasta ficam as regras da aplicação como o tipo de comunicação com o mundo externo (http).
+- **domain**: Aqui vão as regras de negócio além das interfaces que servirão como portas para essa camada.
+- **infra**: Pasta com os detalhes da implementação (bibliotecas externas) como o typeorm, express, manipuladores de data, etc.
+- **main**: Única camada que conhece todas as outras. A aplicação é iniciada a partir dela.
+- **test**: Dir com todos os testes unitarios e integração.
+
 
 ## Execução local
 
