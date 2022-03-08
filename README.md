@@ -2,7 +2,9 @@
 **Sistema feito para igrejas. O sistema consiste em um cadastro de fiéis**
 
 - [Faithful management](#faithful-management)
-  - [Sobre o projeto](#sobre)
+  - [Sobre o projeto](#sobre-o-projeto)
+    - [Tecnologias utilizadas](#tecnologias-utilizadas)
+    - [Estrutura de diretórios](#estrutura-de-diretórios)
   - [Execução local](#execução-local)
     - [Pré-requisitos](#pré-requisitos)
     - [Executando o projeto](#executando-o-projeto)
@@ -85,10 +87,3 @@ O docker-compose irá iniciar 3 serviços
 
 Após iniciar a aplicação, a documentação de toda a api estará disponível a partir do endereço <http://localhost/docs-api>.
 
-## Lint
-
-É importante que o código mantenha um padrão e, para isso, o Eslint está sendo utilizado junto com o Husky e o LintStaged para garantir que todos os commits vão passar por padronização.
-Caso queira executar o eslint antes de fazer o commit
-```sh
-yarn lint
-```
